@@ -63,7 +63,7 @@ export default function AICommandBar({ onActionTriggered, stadiumContext }) {
               type="text" 
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="e.g., Dispatch security to Pavilion End or Reroute North Stand to Gate 2..." 
+              placeholder="e.g., What is the closest Food Stall near East Gate?..." 
               className={styles.commandInput}
               disabled={isProcessing}
             />
