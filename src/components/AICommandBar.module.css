@@ -1,0 +1,139 @@
+.commandBarWrapper {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
+  z-index: 100;
+}
+
+.commandForm {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #e2e8f0;
+  border-radius: 100px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.commandForm:focus-within {
+  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3), 0 8px 10px -6px rgba(59, 130, 246, 0.1);
+  border-color: #93c5fd;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sparkleIcon {
+  font-size: 1.25rem;
+  padding: 0 1rem;
+}
+
+.commandInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0.75rem 0.5rem;
+  font-size: 1rem;
+  color: #0f172a;
+  outline: none;
+  font-family: var(--font-sans);
+}
+
+.commandInput::placeholder {
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.executeButton {
+  background: #0f172a;
+  color: #f8fafc;
+  border: none;
+  padding: 0.75rem 1.75rem;
+  border-radius: 100px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.executeButton:hover:not(:disabled) {
+  background: #3b82f6;
+  transform: translateY(-1px);
+}
+
+.executeButton:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Toast Overlay Styles */
+.toastOverlay {
+  position: fixed;
+  top: 6rem;
+  right: 2rem;
+  z-index: 200;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e2e8f0;
+  padding: 1.25rem;
+  width: 350px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+}
+
+.toastOverlay.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toastContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.toastHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 0.5rem;
+}
+
+.toastAction {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: #059669; /* Emerald */
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+}
+
+.toastTarget {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.toastMessage {
+  font-size: 0.95rem;
+  color: #0f172a;
+  line-height: 1.4;
+  font-weight: 500;
+  padding-top: 0.2rem;
+}

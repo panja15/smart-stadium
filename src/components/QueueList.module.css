@@ -1,0 +1,126 @@
+.queueContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+  opacity: 0.9;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  overflow-y: auto;
+  max-height: 800px;
+  padding-right: 0.5rem;
+}
+
+/* Custom scrollbar */
+.list::-webkit-scrollbar {
+  width: 4px;
+}
+.list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+.list::-webkit-scrollbar-thumb {
+  background-color: var(--card-border);
+  border-radius: 4px;
+}
+
+.queueItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.queueItem:hover {
+  transform: translateX(4px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.activeQueueItem {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.itemName {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #0f172a;
+}
+
+.itemTime {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 90px;
+}
+
+.minLabel {
+  font-size: 0.7rem;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.timeNumber {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.progressBarBg {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.statusLow { background-color: var(--status-low); }
+.statusMedium { background-color: var(--status-medium); }
+.statusHigh { background-color: var(--status-high); }
+
+/* Skeletons */
+.skeletonTitle {
+  height: 1.5rem;
+  width: 40%;
+  background: #1e293b;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeletonItem {
+  height: 50px;
+  width: 100%;
+  background: #1e293b;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
