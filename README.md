@@ -1,4 +1,4 @@
-# 🏟️ Smart Stadium Analytics Command Center
+# 🏟️ Smart Stadium Analytics Command Center 
 
 An enterprise-grade, AI-powered stadium management dashboard built for the **Google x Hack2Skill PromptWars Virtual Hackathon**. 
 
