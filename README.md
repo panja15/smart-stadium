@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏟️ Smart Stadium Analytics Command Center
 
-## Getting Started
+An enterprise-grade, AI-powered stadium management dashboard built for the **Google x Hack2Skill PromptWars Virtual Hackathon**. 
 
-First, run the development server:
+This application directly solves the "Physical Event Experience" problem statement by providing stadium operators with real-time crowd telemetry, predictive wait times, and a natural language AI command interface to seamlessly coordinate foot traffic and dispatch staff during large-scale sporting events.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* **🌍 Dual-View Visualization Engine:** Toggle instantly between a geographical **Google Maps Satellite Heatmap** and a clean, logical **Schematic Floorplan View**.
+* **🤖 Gemini AI Command Center:** A natural language interface powered by the Gemini API. Type commands like *"Dispatch security to the North Stand"* or *"Reroute Pavilion End to Gate B"* to execute state changes and trigger visual UI feedback instantly.
+* **⚡ Live Firebase Telemetry:** Smooth, real-time synchronization of stadium zone capacities (Gates, Food Courts, Restrooms, Seating) using Firebase Realtime Database. 
+* **🚨 Smart Alerts Rerouting:** An automated rule engine that monitors zone capacities and pushes live alerts (e.g., *"⚠️ Gate C congested. Redirecting foot traffic..."*) when thresholds exceed 75%.
+* **🏏 Indian Cricket Localization:** Pre-configured with coordinates and contextual node naming (Pavilion End, VIP Enclosure, etc.) for major Indian cricket venues like M. Chinnaswamy Stadium and Narendra Modi Stadium, complete with live mock IPL match context.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🛠️ Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* **Frontend:** Next.js (App Router), React, Tailwind CSS (Soft White Enterprise Theme)
+* **AI & Logic:** Google Gemini API (Function Calling & Intent Parsing)
+* **Mapping:** Google Maps JavaScript API (`@react-google-maps/api`)
+* **Realtime Data:** Firebase Realtime Database SDK
+* **Deployment:** Containerized via Docker & deployed on Google Cloud Run
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🏗️ Architecture Note: The "Hidden" Simulation Engine
+To guarantee a buttery-smooth evaluation experience and prevent multi-client write collisions, this application separates Read and Write operations:
+1. **Public Dashboard (`/`):** Strictly Read-Only. Uses Firebase `onValue` listeners to dynamically render the map and UI.
+2. **Simulation Engine (`/admin-sim`):** A hidden, dedicated route containing the `setInterval` simulation logic that calculates fluctuating capacities and pushes them to Firebase. Opening this route in a single background tab acts as the centralized "server" driving the live demo.
