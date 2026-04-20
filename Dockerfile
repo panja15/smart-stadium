@@ -19,6 +19,13 @@ COPY . .
 # Next.js disables telemetry during build.
 ENV NEXT_TELEMETRY_DISABLED 1
 
+# Inject Public API Keys at build time (Mandatory for Next.js client-side vars)
+ARG NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+ARG NEXT_PUBLIC_FIREBASE_API_KEY
+
+ENV NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=$NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+ENV NEXT_PUBLIC_FIREBASE_API_KEY=$NEXT_PUBLIC_FIREBASE_API_KEY
+
 RUN npm run build
 
 # Production image, copy all the files and run next
